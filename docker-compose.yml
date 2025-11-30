@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  movie-site:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: movie-site
+    expose:
+      - "80"                 # internal-only; reverse proxy will route here
+    restart: unless-stopped
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
