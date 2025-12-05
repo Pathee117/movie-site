@@ -1,7 +1,12 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getMovie } from "@/lib/tmdb";
 
-export async function GET(_: Request, { params }: { params: { id: string } }) {
-  const movie = await getMovie(params.id);
+// Next.js 16 route handlers: params is a Promise
+export async function GET(
+  _req: NextRequest,
+  context: { params: Promise<{ id: string }> }
+) {
+  const { id } = await context.params;
+  const movie = await getMovie(id);
   return NextResponse.json(movie);
 }
