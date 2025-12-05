@@ -2,7 +2,7 @@ services:
   movie-site:
     build:
       context: .
-      dockerfile: Dockerfile.prod
+      dockerfile: dockerfile
     container_name: movie-site
     expose:
       - "80"
