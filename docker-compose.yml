@@ -1,0 +1,10 @@
+movie-site:
+  build:
+    context: ../Movies
+    dockerfile: dockerfile
+  container_name: movie-site
+  expose:
+    - "80"
+  networks:
+    - web
+  restart: unless-stopped
