@@ -1,10 +1,15 @@
-movie-site:
-  build:
-    context: ../Movies
-    dockerfile: dockerfile
-  container_name: movie-site
-  expose:
-    - "80"
-  networks:
-    - web
-  restart: unless-stopped
+services:
+  movie-site:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: movie-site
+    expose:
+      - "80"
+    networks:
+      - web
+    restart: unless-stopped
+
+networks:
+  web:
+    external: true
