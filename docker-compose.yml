@@ -1,14 +1,16 @@
+version: "3.8"
+
 services:
   movie-site:
     build:
       context: .
-      dockerfile: dockerfile
+      dockerfile: Dockerfile   # rename file to Dockerfile if possible
     container_name: movie-site
-    expose:
-      - "80"
+    ports:
+      - "127.0.0.1:8081:80"    # host localhost → container 80
+    restart: unless-stopped
     networks:
       - web
-    restart: unless-stopped
 
 networks:
   web:
