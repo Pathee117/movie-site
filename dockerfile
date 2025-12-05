@@ -25,7 +25,7 @@ COPY --from=build /app/.next ./.next
 COPY --from=build /app/public ./public
 COPY --from=build /app/package*.json ./
 COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/next.config.* ./ 2>/dev/null || true
+COPY --from=build /app/next.config.js ./next.config.ts
 
 EXPOSE 80
 
